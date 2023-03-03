@@ -1,5 +1,6 @@
 /* Font: Baskervville */
 @import url('https://fonts.googleapis.com/css2?family=Baskervville&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=EB+Garamond&display=swap');
 
 body {
   width: 90%;
@@ -8,27 +9,27 @@ body {
 }
 
 h1 {
-	font-family:Baskervville;
+	font-family:"EB Garamond";
 	font-size: 36px;
 	color: white;
 
 }
 
 h2 {
-	font-family: Baskervville;
+	font-family: "EB Garamond";
 	color: #C0C0C0;
 	font-size:20px;
 }
 
 p {
-	font-family: Baskervville;
+	font-family: "EB Garamond";
 	color: #C0C0C0;
 	font-size:10px;
 
 }
 
 p, a, li {
-	font-family: Baskervville;
+	font-family: "EB Garamond";
 	font-size: 20px;
 	color: rgb(255,255,255);
 }
