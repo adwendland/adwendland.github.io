@@ -153,6 +153,105 @@ li {
 	font-family: "EB Garamond" !important;
 }
 
+.figure-row {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 25px;
+}
+
+.figure-row figure {
+    width: 48%;
+    margin: 0;
+    text-align: center;
+}
+
+.validation-img {
+    width: 100%;
+    height: auto;
+}
+
+.figure-row figcaption {
+    margin-top: 8px;
+}
+
+@media (max-width: 700px) {
+    .figure-row {
+        flex-direction: column;
+    }
+
+    .figure-row figure {
+        width: 100%;
+    }
+}
+
+.analysis-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 30px;
+    max-width: 1400px;
+    margin: 25px auto;
+    align-items: start;
+}
+
+.analysis-grid figure {
+    margin: 0;
+    text-align: center;
+}
+
+.analysis-img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.analysis-grid figcaption {
+    margin-top: 8px;
+    line-height: 1.4;
+}
+
+/* Stack figures on phones */
+@media (max-width: 700px) {
+    .analysis-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+.performance-row {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 25px;
+    max-width: 1400px;
+    margin: 25px auto;
+}
+
+.performance-row figure {
+    width: 48%;
+    margin: 0;
+    text-align: center;
+}
+
+.performance-img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.performance-row figcaption {
+    margin-top: 8px;
+    line-height: 1.4;
+}
+
+@media (max-width: 700px) {
+    .performance-row {
+        flex-direction: column;
+    }
+
+    .performance-row figure {
+        width: 100%;
+    }
+}
 
 
 

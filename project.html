@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>FCC Molecular Dynamics Simulator</title>
+    <link href="style.css" rel="stylesheet" type="text/css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="icon" type="image/x-icon" href="favicon.png">
+</head>
+
+<body>
+	<div class="topnav"> <!-- https://www.w3schools.com/howto/howto_js_topnav.asp -->
+		<a href="index.html">Home</a>	
+        <a href="research.html">Research</a>
+		<a class="active" href="project.html">Project</a>
+		<a href="teaching.html">Teaching</a>
+		<a href="seminar.html">Seminar</a>
+		<a href="notes.html">Notes</a>
+		<a href= "cv.html">CV</a>
+		<a href="https://adwendland.github.io/Blog/">Blog</a>
+	</div>
+
+    <h1>FCC Molecular Dynamics Simulator</h1>
+    <p> <em> A molecular dynamics simulator built in Python and C++ to explore numerical methods 
+    in atomistic simulation and scientific software development. </em> </p>
+
+    <p> I independently developed this project in order to connect the
+        continuum modeling and numerical simulation in my liquid crystals research with
+        modeling and simulation at the atomistic scale. I also wanted experience
+        building scientific simulation software. This simulator 
+        initializes a chosen face-centered cubic crystal lattice, evolves particle 
+        trajectories using Lennard-Jones pair potentials and Newton's laws of motion,
+        and computes structural, thermodynamic, and dynamical properties of the material. I implemented 
+        the core simulation algorithms, analysis routines, automated reports and plots, 
+        and a Streamlit web interface. I then accelerated the computational kernels using C++ and 
+        pybind11.
+    </p>
+
+    <h2 style="text-align: center;">
+    <a href="https://github.com/adwendland/FCC-Molecular-Dynamics">GitHub</a>
+    &nbsp;·&nbsp;
+    <a href="https://fcc-molecular-dynamics.streamlit.app/">Interactive Streamlit Demo</a>
+    &nbsp;·&nbsp;
+    <a href="https://github.com/adwendland/FCC-Molecular-Dynamics/tree/main/docs">Documentation</a>
+    </h2>
+
+    <figure style="text-align: center;">
+    <img src="fcc-md-interface.png"
+         alt="FCC molecular dynamics Streamlit interface showing simulation controls and a nickel crystal."
+         style="width: 100%; max-width: 1000px; height: auto;">
+    <figcaption>
+        Simulation controls and visualization of initial 4 × 4 × 4 Ni FCC crystal.
+    </figcaption>
+    </figure>
+
+    <h2>Technical Highlights</h2>
+    <ul>
+        <li>Velocity Verlet integration for NVE molecular dynamics</li>
+        <li>Berendsen thermostat for NVT simulations</li>
+        <li>Periodic boundary conditions with minimum-image convention</li>
+        <li>Verlet neighbor lists for efficient force calculations and time integration</li>
+        <li>Python and C++ simulation backends connected using pybind11</li>
+        <li>Automated structural, thermodynamic, and transport analysis</li>
+        <li>100+ automated tests for numerical and physical validation</li>
+    </ul>
+
+    <h2>Numerical Methods and Implementation</h2>
+    <p>
+    Particle trajectories are evolved using the velocity Verlet algorithm with
+    periodic boundary conditions and the minimum-image convention. Pair interactions
+    are modeled using a 12-6 Lennard-Jones potential, while Verlet neighbor
+    lists reduce the cost of identifying interacting particle pairs.
+    </p>
+
+    <p>
+    The original implementation was written in Python. I subsequently rewrote the
+    computationally expensive force, integration, and neighbor-list kernels in C++
+    and exposed them to Python using pybind11. This preserves the Python analysis
+    and visualization workflow while moving the performance-critical numerical
+    kernels to compiled code.
+    </p>
+
+
+    <h2>Verification and Validation</h2>
+    <p>
+    I developed an automated validation suite to test both the numerical
+    implementation and the expected physical behavior of the simulator. Tests include:
+    </p>
+
+    <ul>
+        <li>Energy conservation in NVE simulations</li>
+        <li>Temperature stability and equipartition in NVT simulations</li>
+        <li>Linear momentum conservation</li>
+        <li>Timestep refinement and convergence studies</li>
+        <li>Recovery of the expected FCC coordination number of 12</li>
+        <li>Agreement between independent Python and C++ implementations</li>
+        <li>Automated unit and regression testing with pytest</li>
+    </ul>
+
+    <div class="figure-row">
+
+        <figure>
+            <img src="energy_conservation.png"
+                alt="Energy conservation validation"
+                class="validation-img">
+            <figcaption>
+                <strong>Energy conservation.</strong>
+                Relative energy drift remains well below the prescribed tolerance
+                during a 10 ps NVE simulation.
+            </figcaption>
+        </figure>
+
+        <figure>
+            <img src="timestep_convergence.png"
+                alt="Time step convergence validation"
+                class="validation-img">
+            <figcaption>
+                <strong>Time step convergence.</strong>
+                The observed convergence order of 1.85 is consistent with the
+                expected second-order accuracy of velocity-Verlet.
+            </figcaption>
+        </figure>
+
+    </div>
+
+
+    <h2>Simulation Analysis</h2>
+    <p>
+    Post-processing tools compute structural, thermodynamic, and dynamical
+    properties from particle trajectories, including the radial distribution
+    function, structure factor, mean squared displacement, velocity
+    autocorrelation function, coordination number, pressure, heat capacity,
+    and diffusion coefficients.
+    </p>
+
+    <div class="analysis-grid">
+
+        <figure>
+            <img src="Ni_300K_rdf.png"
+                alt="Radial distribution function for nickel at 300 K."
+                class="analysis-img">
+            <figcaption>
+                <strong>Radial distribution function.</strong>
+                The pronounced coordination-shell peaks reflect the ordered
+                structure of the FCC crystal.
+            </figcaption>
+        </figure>
+
+        <figure>
+            <img src="Ni_300K_temperature.png"
+                alt="Temperature versus time for an NVT nickel simulation."
+                class="analysis-img">
+            <figcaption>
+                <strong>Temperature.</strong>
+                The NVT simulation fluctuates around the target temperature of
+                300 K.
+            </figcaption>
+        </figure>
+
+        <figure>
+            <img src="Ni_300K_msd.png"
+                alt="Mean squared displacement for nickel at 300 K."
+                class="analysis-img">
+            <figcaption>
+                <strong>Mean squared displacement.</strong>
+                Atomic displacements remain bounded at room temperature, as expected for atoms
+                vibrating about lattice sites in the solid phase.
+            </figcaption>
+        </figure>
+
+        <figure>
+            <img src="Ni_300K_vacf.png"
+                alt="Velocity autocorrelation function for nickel at 300 K."
+                class="analysis-img">
+            <figcaption>
+                <strong>Velocity autocorrelation function.</strong>
+                The decaying oscillations characterize atomic vibrations and
+                loss of velocity correlation.
+            </figcaption>
+        </figure>
+
+    </div>
+
+
+    <h2>Performance</h2>
+    <p>
+        To explore performance-oriented scientific computing, I implemented a
+        second simulation backend in C++ and connected it to Python using
+        pybind11. The force evaluation, neighbor-list, and integration kernels
+        were moved to compiled code while preserving the Python-based analysis
+        and visualization workflow.
+    </p>
+
+    <p>
+        Benchmarking showed large improvements in both kernel throughput and
+        end-to-end simulation runtime compared with the original non-vectorized
+        Python implementation.
+    </p>
+
+    <div class="performance-row">
+
+        <figure>
+            <img src="lj_force_throughput.png"
+                alt="Lennard-Jones force throughput comparison between Python and C++ backends."
+                class="performance-img">
+            <figcaption>
+                <strong>Force-kernel throughput.</strong>
+                The C++ backend evaluates substantially more neighbor-pair
+                interactions per second than the original Python implementation
+                across all tested system sizes.
+            </figcaption>
+        </figure>
+
+        <figure>
+            <img src="nve_runtime.png"
+                alt="Runtime comparison for Python and C++ NVE simulations."
+                class="performance-img">
+            <figcaption>
+                <strong>End-to-end runtime.</strong>
+                For 500 NVE steps, the C++ backend achieves substantially lower
+                runtimes across all tested system sizes than the Python backend.
+            </figcaption>
+        </figure>
+
+    </div>
+
+
+    <h2>Technologies</h2>
+
+    <p style="text-align: center;">
+    Python · C++ · NumPy · pybind11 · pytest · Matplotlib · Streamlit
+    </p>
+    
+</body>
+</html>
