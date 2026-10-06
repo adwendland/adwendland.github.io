@@ -34,6 +34,11 @@ p, a, li {
 	color: rgb(0,14,47);
 }
 
+img {
+    max-width: 100%;
+    height: auto;
+}
+
 /* Add a black background color to the top navigation */
 .topnav {
   background-color: rgb(0,14,47);
