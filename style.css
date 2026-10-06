@@ -155,15 +155,36 @@ li {
 
 .figure-row {
     display: flex;
-    justify-content: center;
-    align-items: flex-start;
-    gap: 25px;
+    gap: 20px;
+    width: 100%;
+    max-width: 1200px;
+    margin: 25px auto;
+    box-sizing: border-box;
 }
 
 .figure-row figure {
-    width: 48%;
+    flex: 1 1 0;
+    min-width: 0;
     margin: 0;
     text-align: center;
+}
+
+.figure-row img {
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+}
+
+.figure-row figcaption {
+    margin-top: 8px;
+    line-height: 1.4;
+}
+
+@media (max-width: 700px) {
+    .figure-row {
+        flex-direction: column;
+    }
 }
 
 .validation-img {
@@ -188,29 +209,25 @@ li {
 .analysis-grid {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 30px;
-    max-width: 1400px;
+    gap: 20px;
+    width: 100%;
+    max-width: 1200px;
     margin: 25px auto;
-    align-items: start;
 }
 
 .analysis-grid figure {
+    min-width: 0;
     margin: 0;
     text-align: center;
 }
 
-.analysis-img {
-    width: 100%;
-    height: auto;
+.analysis-grid img {
     display: block;
+    width: 100%;
+    max-width: 100%;
+    height: auto;
 }
 
-.analysis-grid figcaption {
-    margin-top: 8px;
-    line-height: 1.4;
-}
-
-/* Stack figures on phones */
 @media (max-width: 700px) {
     .analysis-grid {
         grid-template-columns: 1fr;
