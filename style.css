@@ -222,3 +222,39 @@ li {
         grid-template-columns: 1fr;
     }
 }
+
+.research-row {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 35px;
+    align-items: center;
+    margin-bottom: 35px;
+}
+
+.research-text {
+    min-width: 0;
+}
+
+.research-figure {
+    margin: 0;
+    text-align: center;
+}
+
+.research-figure img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.research-figure figcaption {
+    font-family: "EB Garamond";
+    font-size: 15px;
+    font-style: italic;
+    margin-top: 8px;
+}
+
+@media (max-width: 800px) {
+    .research-row {
+        grid-template-columns: 1fr;
+    }
+}

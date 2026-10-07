@@ -22,25 +22,172 @@
 		<a href="https://adwendland.github.io/Blog/">Blog</a>"
 	</div>
 	
-    <h1>Research Interests</h1>
-	<h2> I am a PhD candidate in applied mathematics in my sixth year at the University of
-		Connecticut under the supervision of Dr. Xiaodong Yan. My research combines 
-		variational methods, differential equations, and numerical simulation to study
-		problems arising from materials science and other related applications. My dissertation
-		work focuses on the existence, uniqueness, qualitative properties, and parameter-dependent 
-		behavior of solutions to nonlinear free-energy models in liquid crystal science.
-		More broadly, I am interested in how mathematics and computation
-		can be used to describe and predict the behavior of complex physical systems. </h2>
-	
-	<h1>Papers</h1>
-	<ol>
-		<li> T. E. St. George and A. D. Wendland, <em>Orthonormalization of a subset of Bernstein
-			 polynomial basis functions</em>, The PUMP Journal of Undergraduate Research 
-			 <b>7</b> (2024), 258-273, 
-			 DOI <a href="https://doi.org/10.46787/pump.v7i0.3765">https://doi.org/10.46787/pump.v7i0.3765.</a>
-	</ol>
+    <h1>Research</h1>
+	<h2>Research Overview</h2>
 
-	<h1>Preprints</h1>
+	<p>
+		I study how mathematical and computational modeling can be used to understand
+		the behavior of complex materials. My research combines tools from 
+		ordinary/partial differential equations, the calculus of variations, 
+		mathematical analysis, and numerical simulation to connect physics-based models
+		with predictions about how materials respond to external forces and their 
+		surroundings.
+
+		My doctoral research primarily focuses on continuum models of 
+		bent-core smectic-A ferroelectric (SmAP<sub>F</sub>) liquid crystals.
+	</p>
+
+	<h2>Ferroelectric liquid crystals</h2>
+
+	<div class="research-row">
+
+    	<div class="research-text">
+			<p>
+				Liquid crystals are an unusual (and cool) state of matter: they can flow like liquids,
+				while their molecules retain some of the orientational order found in solids. In <em>smectic</em> 
+				liquid crystals, the molecules additionally organize into layers. In 
+				<em>ferroelectric</em> liquid crystals, the molecules
+				also exhibit a spontaneous electrical polarization, which introduces an additional
+				interaction between molecular orientation and applied electric fields. In <em>bent-core</em>
+				liquid crystals, individual molecules are bent (like a banana or chevron) 
+				which also contributes to this polarization through the underlying geometry 
+				of how electrons are placed.
+			</p>
+
+			<p>
+				This creates a competition between several different physical mechanisms: elasticity
+				may prefer the molecules to be oriented one way, electric forcing may prefer another orientation,
+				and interactions between the liquid crystal (LC) molecules and the surfaces containing the LCs 
+				may prefer yet another. 
+			</p>
+		</div>
+
+		<figure class="research-figure">
+			<img src="LC_phases.png"
+				alt="Examples of several smectic liquid crystal phases">
+			<figcaption>
+				Examples of smectic liquid crystal phases with different molecular
+				organizations and polarization structures. SmAP<sub>F</sub> phase is 
+				shown lower left. Note the bent-core structure. 
+				Image source: Gill et. al. (2025), <em>Materials Horizons</em>,
+				<a href="https://www.researchgate.net/figure/Sketch-of-the-molecular-packing-their-symmetry-using-Schoenflies-notations-and-the_fig4_393916520">[link]</a>.
+			</figcaption>
+		</figure>
+	</div>
+
+	<h2>Why liquid crystals?</h2>
+	<p>
+		From a mathematical perspective: liquid crystals lead to a surprisingly rich
+		collection of analytical problems. Pierre-Gilles de Gennes won the 1991
+		Nobel Prize in physics for his part in extending classical phase transitions theory 
+		to liquid crystals and other complex polymers
+		<a href="https://www.nobelprize.org/prizes/physics/1991/gennes/facts/">[link]</a>.
+	</p>
+
+	<p>
+		In the real world: liquid crystals are useful in engineering applications because their 
+		molecular orientation can be controlled by external forces, in particular 
+		an applied electric field. This makes it possible to translate a change in 
+		electrical input into a change in the material's optical properties.
+	</p>
+
+	<p>
+		<b>Every time you use an LCD screen -- whether on a laptop monitor,
+			television, calculator, or other display -- a voltage is applied across
+			a thin cell of liquid crystal molecules.</b> The resulting electric field changes the orientation 
+			of the liquid crystal molecules, which changes how light passes through the display. 
+			By controlling this response pixel by pixel, the LCD screen produces the images you 
+			see on your screen.
+	</p>
+
+
+	<h2>What I Study</h2>
+	<p style="text-align: center;">
+    <em>How do competing effects from material properties, electric fields, 
+		and interactions with the boundaries of a device determine the structure and 
+		evolution of liquid crystals?
+	</em>
+    </p>
+
+	<p>
+		I use mathematical and numerical models to determine which configurations are 
+		possible, when they are unique, how they change as physical parameters vary, 
+		and how the material approaches equilibrium over time.
+	</p>
+
+	<h2>Equilibrium Structure</h2>
+
+	<p>
+		The first part of my doctoral research asks what equilibrium configurations
+		of a thin SmAP<sub>F</sub> liquid crystal cell are possible under an applied
+		electric field.
+	</p>
+
+	<p>
+		Starting from a free energy model, we derive a nonlinear boundary value
+		problem governing the orientation of the liquid crystal molecules. The model
+		incorporates several competing physical effects, including elastic
+		deformation, surface interactions, and the ferroelectric coupling to an 
+		externally applied electric field.
+	</p>
+
+	<p>
+		I combine analytical and numerical methods to study how changing these
+		physical parameters changes the resulting molecular orientation. Of particular 
+		interest is when the electric field is strong enough to overcome surface
+		effects and align the material with the applied field.
+	</p>
+
+	<p>
+		Analytically, I establish results on existence and uniqueness, monotonicity 
+		and symmetry of solutions, and the admissible molecular configurations
+		associated with different physical parameters. Numerically, I discretize
+		the spatial variable using second-order finite differences and use
+		gradient flow dynamics to relax the system toward equilibrium.
+	</p>
+
+
+	<h2>Dynamics and Relaxation</h2>
+
+	<p>
+		Equilibrium models tell us which configurations a liquid crystal can occupy,
+		but they do not explain how the material gets there.
+	</p>
+
+	<p>
+		My current work studies a time-dependent Landau--Khalatnikov model describing
+		how the molecular orientation evolves as the system dissipates energy and
+		relaxes toward equilibrium.
+	</p>
+
+	<p>
+		Mathematically, this leads to a nonlinear partial differential equation with
+		nonlinear boundary conditions. I study questions including whether solutions
+		exist and are unique, whether physically meaningful orientations remain
+		admissible during the evolution, and what happens to solutions over long
+		periods of time.
+	</p>
+
+	<h2>My Approach</h2>
+
+	<p>
+		Across these problems, I combine physics-based modeling, mathematical analysis,
+		and numerical computation. I derive governing equations from physical
+		energy principles, analyze the resulting differential equations mathematically,
+		develop numerical methods to compute their solutions, and use those 
+		solutions to understand how physical parameters influence material 
+		(in my doctoral research setting, SmAP<sub>F</sub> liquid crystal) behavior.
+	</p>
+
+	<p style="text-align: center;">
+		<b>
+			Physical model &rarr; Differential equation &rarr;
+			Analysis &rarr; Computation &rarr; Physical interpretation
+		</b>
+	</p>
+
+
+	<h2>Preprints</h2>
 	<ol>
 		<li> A. D. Wendland and X. Yan, <em>Polar director structure of SmAP<sub>F</sub> phase of bent-core 
 			liquid crystals in thin planar cells with bias electric field</em>, 
@@ -49,14 +196,27 @@
 		</li>
 	</ol>
 
-	<h1>In Preparation</h1>
+	<h2>In Preparation</h2>
 	<ol>
 		<li> A.D. Wendland and X. Yan, <em>Well-posedness and long-time behavior of a one-dimensional Landau-Khalatnikov 
 			model for SmAP<sub>F</sub> bent-core liquid crystals </em>, manuscript in preparation.
 		</li>
 	</ol>
+
+	<h2>Other Papers</h2>
+	<ol>
+		<li> T. E. St. George and A. D. Wendland, <em>Orthonormalization of a subset of Bernstein
+			 polynomial basis functions</em>, The PUMP Journal of Undergraduate Research 
+			 <b>7</b> (2024), 258-273, 
+			 DOI <a href="https://doi.org/10.46787/pump.v7i0.3765">https://doi.org/10.46787/pump.v7i0.3765.</a>
+	</ol>
+
+	<h2>Upcoming Talks</h2>
+	<ol>
+		<li> May 2027, SIAM Materials Science, Bellevue, Washington. <em>Invited talk.</em></li>
+	</ol>
 	
-	<h1>Talks</h1>
+	<h2>Selected Talks</h2>
 	<ol>
 		<li> May 2026, Graduate Research Forum, The University of Connecticut.
 		<li> May 2026, SIGMA Seminar, The University of Connecticut.
