@@ -264,8 +264,16 @@ mjx-container {
 }
 
 .equation-scroll {
+    width: 100%;
+    max-width: 100%;
     overflow-x: auto;
     overflow-y: hidden;
-    max-width: 100%;
-    padding-bottom: 8px;
+    -webkit-overflow-scrolling: touch;
+    touch-action: pan-x;
+}
+
+.equation-scroll mjx-container[display="true"] {
+    width: max-content !important;
+    min-width: 100%;
+    text-align: center !important;
 }
