@@ -258,3 +258,7 @@ li {
         grid-template-columns: 1fr;
     }
 }
+
+mjx-container {
+    color: rgb(0,14,47);
+}

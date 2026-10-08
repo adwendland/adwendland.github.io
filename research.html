@@ -151,38 +151,68 @@
 	<p>
 		The first part of my doctoral research asks what equilibrium configurations
 		of a thin SmAP<sub>F</sub> liquid crystal cell are possible under an applied
-		electric field.
+		electric field, and how those configurations depend on the competing
+		physical effects within the material.
 	</p>
 
 	<p>
-		Starting from a free energy model, we derive a nonlinear boundary value
-		problem governing the orientation of the liquid crystal molecules. The model
-		incorporates several competing physical effects, including elastic
-		deformation, surface interactions, and the ferroelectric coupling to an 
-		externally applied electric field.
+		We describe the molecular orientation using an angle \(\theta(x)\), where
+		\(x\) denotes position across the cell. Starting from a free energy model,
+		we account for elastic deformation of the director, interactions with the
+		cell surfaces, and ferroelectric coupling to an externally applied
+		electric field. Equilibrium configurations correspond to stationary
+		points of this energy and satisfy a nonlinear boundary value problem.
+	</p>
+
+	<div class="equation">
+		\[
+		\begin{aligned}
+		\tilde{\mathcal{I}}[\theta]
+		&=
+		\int_0^1
+		\left(
+			\underbrace{\frac{1}{2}(\sin^2\theta + \kappa\cos^2\theta)\theta'^2}_\text{elastic}
+			+
+			\underbrace{\left(\frac{L}{\xi}\right)^2\left(\frac{1}{2}\cos^2\theta-\tilde{E}_B\cos\theta\right)}_\text{electrostatic}
+		\right)\,dx \\
+		&\qquad +
+		\underbrace{\tilde{W}_S\left(\frac{L}{\xi}\right)(\cos\theta(1)-\cos\theta(0))}_\text{surface}
+		\end{aligned}
+		\]
+	</div>
+
+	<p>
+		Here, \(x \in [0,1]\) denotes normalized position across the cell,
+		\(\vec{p}(x)= (\cos\theta(x),\sin\theta(x),0)\) is the polar director, \(\kappa\) measures elastic
+		anisotropy, \(L/\xi\) is the ratio of the cell thickness to the 
+		elastic-electrostatic intrinsic length scale,
+		\(\widetilde{E}_B\) is the dimensionless applied electric
+		bias, and \(\widetilde{W}_S\) measures surface anchoring strength.
 	</p>
 
 	<p>
-		I combine analytical and numerical methods to study how changing these
-		physical parameters changes the resulting molecular orientation. Of particular 
-		interest is when the electric field is strong enough to overcome surface
-		effects and align the material with the applied field.
+		This formulation allows us to ask how competition between bulk forcing
+		from the electric field and anchoring at the cell surfaces determines the
+		equilibrium director profile. Of particular interest is when the electric
+		field becomes strong enough to overcome the surface effects and align the
+		material with the applied field.
 	</p>
 
 	<p>
-		Analytically, I establish results on existence and uniqueness, monotonicity 
+		Analytically, I establish results on existence and uniqueness, monotonicity
 		and symmetry of solutions, and the admissible molecular configurations
-		associated with different physical parameters. Numerically, I discretize
-		the spatial variable using second-order finite differences and use
-		gradient flow dynamics to relax the system toward equilibrium.
+		associated with different parameter regimes. Numerically, I use
+		second-order finite differences together with gradient-flow and Newton
+		methods to compute equilibrium solutions and explore their dependence on
+		the physical parameters.
 	</p>
 
 	<p>
-		We found that the equilibrium configuration of SmAP<sub>F</sub> liquid crystal 
-		depends strongly on the magnitude of the applied electric bias field as well as 
-		the interactions at the surface of the cell. The figures below show the polar director
-		component \(p_x = \cos\theta\) across the cell at different applied biases and 
-		surface anchoring strengths.
+		The figures below illustrate this competition through the polar director
+		component \(p_x = \cos\theta\). Increasing the applied electric bias favors
+		alignment in the \(+x\) direction throughout the cell, while increasing
+		the surface anchoring strength more strongly enforces the preferred
+		orientations at the two cell boundaries.
 	</p>
 
 	<div class="figure-row">
@@ -218,23 +248,76 @@
 	<h2>Dynamics and Relaxation</h2>
 
 	<p>
-		Equilibrium models tell us which configurations a liquid crystal can occupy,
-		but they do not explain how the material gets there.
+		The equilibrium model describes the configurations that minimize the free
+		energy, but it does not tell us how the liquid crystal approaches those
+		states. My current work extends this model to study the time-dependent
+		relaxation of the director.
 	</p>
 
 	<p>
-		My current work studies a time-dependent Landau--Khalatnikov model describing
-		how the molecular orientation evolves as the system dissipates energy and
+		We use a Landau&ndash;Khalatnikov evolution in which the same free energy
+		that determines the equilibrium structure also drives the dynamics.
+		The resulting nonlinear partial differential equation describes how the
+		molecular orientation evolves while the system dissipates energy and
 		relaxes toward equilibrium.
 	</p>
 
+	<div class="equation">
+		\[
+			\gamma \theta_t = -\frac{\delta\tilde{\mathcal{I}}[\theta]}{\delta \theta}
+		\]
+	</div>
+
 	<p>
-		Mathematically, this leads to a nonlinear partial differential equation with
-		nonlinear boundary conditions. I study questions including whether solutions
-		exist and are unique, whether physically meaningful orientations remain
-		admissible during the evolution, and what happens to solutions over long
-		periods of time.
+		Mathematically, I study existence and uniqueness of solutions, preservation
+		of physically admissible director orientations, and the long-time behavior
+		of the evolution. I also use numerical simulations to investigate how
+		physical parameters such as the applied electric bias affect both the
+		transient dynamics and the rate of relaxation.
 	</p>
+
+	<p>
+		The heatmaps below show the director component
+		\(p_x = \cos\theta\) as a function of normalized position \(x\) and time
+		\(t\). Color indicates the local molecular orientation, while the horizontal
+		lines mark characteristic times at which the solution has completed 90%
+		of its relaxation according to several measures.
+	</p>
+
+
+	<div class="figure-row">
+
+		<figure>
+			<img src="LC_relaxation_Eb0.png"
+				alt="Heatmap of liquid crystal relaxation at zero bias">
+
+			<figcaption>
+				<b>Relaxation under zero applied bias.</b>
+				With \(\widetilde{E}_B=0\), the evolution is governed primarily by
+				elastic and surface effects. The director gradually relaxes toward
+				an equilibrium profile that is symmetric across the cell.
+				Fixed parameters:
+				\(\widetilde{W}_S=0.5,\ \kappa=0.2,\ L/\xi=4\).
+			</figcaption>
+		</figure>
+
+		<figure>
+			<img src="LC_relaxation_Eb2.png"
+				alt="Heatmap of liquid crystal relaxation at high bias">
+
+			<figcaption>
+				<b>Relaxation under strong applied bias.</b>
+				With \(\widetilde{E}_B=2\), the electric field strongly favors
+				alignment in the \(+x\) direction. The director therefore evolves
+				toward a more uniformly positive \(p_x\) state and reaches its
+				equilibrium configuration more rapidly.
+				Fixed parameters:
+				\(\widetilde{W}_S=0.5,\ \kappa=0.2,\ L/\xi=4\).
+			</figcaption>
+		</figure>
+
+	</div>
+
 
 	<h2>My Approach</h2>
 
