@@ -211,8 +211,9 @@ li {
 .figure-row figcaption,
 .analysis-grid figcaption,
 .performance-row figcaption {
+    font-family: "EB Garamond";
+    font-size: 15px;
     margin-top: 8px;
-    line-height: 1.4;
 }
 
 @media (max-width: 700px) {
@@ -249,7 +250,6 @@ li {
 .research-figure figcaption {
     font-family: "EB Garamond";
     font-size: 15px;
-    font-style: italic;
     margin-top: 8px;
 }
 
