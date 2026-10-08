@@ -262,3 +262,10 @@ li {
 mjx-container {
     color: rgb(0,14,47);
 }
+
+.equation-scroll {
+    overflow-x: auto;
+    overflow-y: hidden;
+    max-width: 100%;
+    padding-bottom: 8px;
+}
