@@ -273,7 +273,9 @@ mjx-container {
 }
 
 .equation-scroll mjx-container[display="true"] {
+    display: block !important;
     width: max-content !important;
-    min-width: 100%;
-    text-align: center !important;
+    min-width: 0 !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
 }
